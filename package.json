@@ -1,0 +1,25 @@
+{
+  "name": "barco-cucumber",
+  "version": "1.0.0",
+  "description": "login flow using cucumber framework",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "rimraf temp/ && tsc",
+    "test": "protractor temp/configuration.js",
+    "webdriver-update": "./node_modules/.bin/webdriver-manager-update"
+  },
+  "author": "Nishant",
+  "license": "ISC",
+  "dependencies": {
+    "@types/cucumber": "^4.0.5",
+    "@types/jasmine": "^3.3.9",
+    "@types/jasminewd2": "^2.0.6",
+    "@types/node": "^11.9.3",
+    "cucumber": "^5.1.0",
+    "jasmine": "^3.3.1",
+    "protractor": "^5.4.2",
+    "protractor-cucumber-framework": "^6.1.1",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3"
+  }
+}
