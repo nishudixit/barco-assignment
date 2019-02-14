@@ -1,15 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
+    "outDir": "./temp",
     "module": "commonjs",
-    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": false,
+    "skipLibCheck": true,
     "sourceMap": true,
     "declaration": false,
-    "removeComments": false,
-    "noImplicitAny": true,
-    "experimentalDecorators": true,
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
-    "outDir": "temp/"
+    "experimentalDecorators": true,
+    "allowJs": true,
   },
   "exclude": [
     "node_modules"

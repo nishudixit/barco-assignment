@@ -1,17 +1,16 @@
 var { Given, When, Then } = require('cucumber');
+var browser = require('protractor');
 var request = require('superagent');
+var seleniumWebdriver = require('selenium-webdriver');
 
-function apiCall(){
- 
-};
-
+var userName, passWord;
 Given('simple user is Nishant', function () {
-  console.log('simple user');
+  //console.log('simple user');
 });
 
-When('send PUT request to rest api to retrieve username and password', function () {
+When('send GET request to rest api to retrieve username and password', function () {
   var deferredRequest = protractor.promise.defer();
-  var requestUrl = "https://my-json-server.typicode.com/nishudixit/barco-assignment/"; //mention the request URL here
+  var requestUrl = "https://my-json-server.typicode.com/nishudixit/barco-assignment/Nishant"; //mention the request URL here
   request
     .get(requestUrl)
     .set('Accept', 'application/json')
@@ -22,18 +21,25 @@ When('send PUT request to rest api to retrieve username and password', function 
         deferredRequest.cancel(err);
         console.log(err.text);
       } else {
-        var response = res;
+        username = JSON.parse(res.text).UserName;
+        password = JSON.parse(res.text).Password;
+        console.log("fetch username from json response "+username);
+        console.log("fetch password from json response "+password);
         deferredRequest.fulfill(res);
-        console.log(res.text);
-        console.log(res.body);
-        var obj = JSON.parse(response);
-        console.log(obj.UserName);
-        //res.body.get()
       }
     });
   return deferredRequest.promise;
 });
 
-Then('GET response from rest api and username should be {string}', function (string) {
-  console.log('test');
+Then('user navigates to git hub website and enter username and password to login', function () {
+  protractor.browser.get(protractor.browser.baseUrl);
+  function myUsername(username) {
+    document.getElementById("login_field").value = username
+  }
+  function myPassword(password) {
+    document.getElementById("password").value = password;
+  }
+  function click() {
+    document.getElementsByName("commit").click;
+  }
 });
