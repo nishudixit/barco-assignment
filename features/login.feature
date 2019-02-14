@@ -4,12 +4,6 @@ Feature: Login flow
 
     Scenario: Login flow testing for simple user
 
-        Given simple user navigates to login page
-        When simple user enters username and password
-        Then simple user should login successfully
-
-    Scenario: Login flow testing for admin user
-
-        Given admin user navigates to login page
-        When admin user enters username and password
-        Then admin user should login successfully
+        Given simple user is Nishant
+        When send PUT request to rest api to retrieve username and password
+        Then GET response from rest api and username should be "Nishant"
