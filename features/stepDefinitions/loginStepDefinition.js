@@ -11,7 +11,7 @@ Given('simple user is Nishant', function () {
 
 When('send PUT request to rest api to retrieve username and password', function () {
   var deferredRequest = protractor.promise.defer();
-  var requestUrl = "https://my-json-server.typicode.com/nishudixit/barco-assignment/Nishant"; //mention the request URL here
+  var requestUrl = "https://my-json-server.typicode.com/nishudixit/barco-assignment/"; //mention the request URL here
   request
     .get(requestUrl)
     .set('Accept', 'application/json')
