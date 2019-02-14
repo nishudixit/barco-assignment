@@ -1,6 +1,10 @@
 var { Given, When, Then } = require('cucumber');
 var request = require('superagent');
 
+function apiCall(){
+ 
+};
+
 Given('simple user is Nishant', function () {
   console.log('simple user');
 });
@@ -18,13 +22,13 @@ When('send PUT request to rest api to retrieve username and password', function 
         deferredRequest.cancel(err);
         console.log(err.text);
       } else {
+        var response = res;
         deferredRequest.fulfill(res);
         console.log(res.text);
-        var uname = res.text.split('"UserName":"')[1].split('"')[0];
-        var pass = res.text.split('"Password":"')[1].split('"')[0];
-
-        console.log(uname);
-        console.log(pass);
+        console.log(res.body);
+        var obj = JSON.parse(response);
+        console.log(obj.UserName);
+        //res.body.get()
       }
     });
   return deferredRequest.promise;

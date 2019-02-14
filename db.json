@@ -1,4 +1,3 @@
 {
-  "Nishant":{ "UserName": "nishutest", "Password": "strange@1186" },
-  "Gaurav": { "UserName": "Gaurav", "Password": "barco" }
+  "UserName": "nishutest", "Password": "strange@1186"
 }
