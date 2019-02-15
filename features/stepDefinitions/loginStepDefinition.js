@@ -24,10 +24,11 @@ When('send GET request to rest api to retrieve username and password', function 
         deferredRequest.cancel(err);
         console.log(err.text);
       } else {
+        console.log(res.text);
         username = JSON.parse(res.text).UserName;
         password = JSON.parse(res.text).Password;
-        console.log("fetch username from json response "+username);
-        console.log("fetch password from json response "+password);
+        console.log("fetch username from json response = "+username);
+        console.log("fetch password from json response = "+password);
         deferredRequest.fulfill(res);
       }
     });
@@ -39,5 +40,6 @@ Then('user navigates to git hub website and enter username and password to login
   await element(by.id('login_field')).sendKeys(username);
   await element(by.id('password')).sendKeys(password);
   await element(by.xpath("//input[@type='submit']")).click();
+  console.log("LOGIN SUCCESSFULL");
 });
 
