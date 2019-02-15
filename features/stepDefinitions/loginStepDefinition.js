@@ -3,6 +3,8 @@ var browser = require('protractor');
 var request = require('superagent');
 var seleniumWebdriver = require('selenium-webdriver');
 var {By, element} = require ('protractor');
+var {setDefaultTimeout} = require('cucumber');
+setDefaultTimeout(60 * 1000);
 
 var userName, passWord;
 Given('simple user is Nishant', function () {
@@ -32,20 +34,10 @@ When('send GET request to rest api to retrieve username and password', function 
   return deferredRequest.promise;
 });
 
-Then('user navigates to git hub website and enter username and password to login', function () {
-  protractor.browser.get(protractor.browser.baseUrl);
-  function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-  }
-  sleep(5000);
-  element(by.id('login_field')).sendKeys(username);
-  sleep(5000);
-  element(by.id('password')).sendKeys(password);
-  element(by.name("commit")).click;
+Then('user navigates to git hub website and enter username and password to login', async () => {
+  await protractor.browser.get(protractor.browser.baseUrl);
+  await element(by.id('login_field')).sendKeys(username);
+  await element(by.id('password')).sendKeys(password);
+  await element(by.xpath("//input[@type='submit']")).click();
 });
 
