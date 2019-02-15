@@ -1,14 +1,13 @@
 var { Given, When, Then } = require('cucumber');
-var browser = require('protractor');
 var request = require('superagent');
 var seleniumWebdriver = require('selenium-webdriver');
-var {By, element} = require ('protractor');
+var {By, browser, element} = require ('protractor');
 var {setDefaultTimeout} = require('cucumber');
 setDefaultTimeout(60 * 1000);
 
 var userName, passWord;
 Given('simple user is Nishant', function () {
-  //console.log('simple user');
+  console.log('simple user is Nishant');
 });
 
 When('send GET request to rest api to retrieve username and password', function () {
@@ -36,7 +35,7 @@ When('send GET request to rest api to retrieve username and password', function 
 });
 
 Then('user navigates to git hub website and enter username and password to login', async () => {
-  await protractor.browser.get(protractor.browser.baseUrl);
+  await browser.get(browser.baseUrl);
   await element(by.id('login_field')).sendKeys(username);
   await element(by.id('password')).sendKeys(password);
   await element(by.xpath("//input[@type='submit']")).click();
