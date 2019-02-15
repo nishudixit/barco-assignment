@@ -46,5 +46,6 @@ Then('user navigates to git hub website and enter username and password to login
   element(by.id('login_field')).sendKeys(username);
   sleep(5000);
   element(by.id('password')).sendKeys(password);
+  element(by.name("commit")).click;
 });
 
